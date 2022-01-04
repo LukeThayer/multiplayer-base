@@ -1,0 +1,33 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+[application]
+
+config/name="server"
+run/main_scene="res://scene/main/GameServer.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+ServerData="*res://scene/singletons/ServerData.gd"
+HubConnection="*res://scene/singletons/HubConnection.gd"
+
+[global]
+
+port=false
+
+[physics]
+
+common/physics_fps=20
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

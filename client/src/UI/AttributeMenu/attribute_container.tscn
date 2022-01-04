@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/ui/buttons/plus_button.png" type="Texture" id=2]
+[ext_resource path="res://Assets/ui/buttons/minus_button.png" type="Texture" id=3]
+[ext_resource path="res://src/UI/AttributeMenu/attribute_container.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/font/m3x6.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 128
+font_data = SubResource( 1 )
+
+[node name="attribute_container" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1240.0
+margin_bottom = -704.0
+rect_min_size = Vector2( 40, 16 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 8 )
+custom_constants/separation = 1
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="decrement" type="TextureButton" parent="HBoxContainer"]
+margin_left = 11.0
+margin_right = 19.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 3 )
+
+[node name="attribute_sym" type="TextureRect" parent="HBoxContainer"]
+margin_left = 20.0
+margin_right = 20.0
+margin_bottom = 16.0
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/attribute_sym"]
+margin_top = -5.68434e-14
+margin_right = 160.0
+margin_bottom = 80.0
+rect_scale = Vector2( 0.1, 0.1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="stat_label" type="Label" parent="HBoxContainer/attribute_sym/CenterContainer"]
+margin_left = 80.0
+margin_right = 80.0
+margin_bottom = 102.0
+custom_fonts/font = SubResource( 2 )
+
+[node name="increment" type="TextureButton" parent="HBoxContainer"]
+margin_left = 21.0
+margin_right = 29.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 2 )

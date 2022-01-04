@@ -1,0 +1,86 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "movement_controller",
+"language": "GDScript",
+"path": "res://src/bases/movement_controller.gd"
+}, {
+"base": "movement_controller",
+"class": "projectile",
+"language": "GDScript",
+"path": "res://src/bases/projectiles/projectile.gd"
+}, {
+"base": "Node",
+"class": "projectile_spawner",
+"language": "GDScript",
+"path": "res://src/bases/projectiles/projectile_spawner.gd"
+} ]
+_global_script_class_icons={
+"movement_controller": "",
+"projectile": "",
+"projectile_spawner": ""
+}
+
+[application]
+
+config/name="client"
+run/main_scene="res://src/levels/scene_handler.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+GameServer="*res://src/singletons/GameServer.gd"
+Gateway="*res://src/singletons/Gateway.gd"
+
+[global]
+
+physic=false
+
+[input]
+
+move_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemies"
+2d_physics/layer_3="world"
+2d_physics/layer_4="player_hitbox"
+2d_physics/layer_5="enemy_hitbox"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

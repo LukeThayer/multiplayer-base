@@ -1,0 +1,240 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://src/UI/AttributeMenu/attribute_container.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/ui/symbols/int_symbol.png" type="Texture" id=2]
+[ext_resource path="res://Assets/ui/symbols/dex_symbol.png" type="Texture" id=3]
+[ext_resource path="res://Assets/ui/symbols/con_symbol.png" type="Texture" id=4]
+[ext_resource path="res://Assets/ui/symbols/spr_symbol.png" type="Texture" id=5]
+[ext_resource path="res://Assets/ui/symbols/lck_symbol.png" type="Texture" id=6]
+[ext_resource path="res://Assets/ui/containers/attribute_container.png" type="Texture" id=7]
+[ext_resource path="res://Assets/ui/symbols/str_symbol.png" type="Texture" id=8]
+[ext_resource path="res://Assets/ui/buttons/reset_button.png" type="Texture" id=9]
+[ext_resource path="res://Assets/font/NO_CONTINUE_30.tres" type="DynamicFont" id=10]
+[ext_resource path="res://src/UI/AttributeMenu/attribute_menu.gd" type="Script" id=11]
+[ext_resource path="res://Assets/ui/buttons/plus_button.png" type="Texture" id=12]
+[ext_resource path="res://src/ui/dragbar/DraggableBar.gd" type="Script" id=13]
+
+[node name="AttributeMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -960.0
+margin_bottom = -340.0
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 80.0
+margin_bottom = 94.0
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 27.1194
+margin_top = 75.7516
+margin_right = 104.119
+margin_bottom = 147.752
+rect_scale = Vector2( 3.5, 3.5 )
+custom_constants/vseparation = 12
+custom_constants/hseparation = -3
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="int" parent="GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 16.0
+
+[node name="decrement" parent="GridContainer/int/HBoxContainer" index="0"]
+margin_left = 3.0
+margin_right = 11.0
+
+[node name="attribute_sym" parent="GridContainer/int/HBoxContainer" index="1"]
+margin_left = 12.0
+margin_right = 28.0
+texture = ExtResource( 2 )
+
+[node name="stat_label" parent="GridContainer/int/HBoxContainer/attribute_sym/CenterContainer" index="0"]
+margin_left = 64.0
+margin_right = 96.0
+text = "1"
+
+[node name="increment" parent="GridContainer/int/HBoxContainer" index="2"]
+margin_left = 29.0
+margin_right = 37.0
+
+[node name="str" parent="GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 37.0
+margin_right = 77.0
+margin_bottom = 16.0
+
+[node name="decrement" parent="GridContainer/str/HBoxContainer" index="0"]
+margin_left = 3.0
+margin_right = 11.0
+
+[node name="attribute_sym" parent="GridContainer/str/HBoxContainer" index="1"]
+margin_left = 12.0
+margin_right = 28.0
+texture = ExtResource( 8 )
+
+[node name="stat_label" parent="GridContainer/str/HBoxContainer/attribute_sym/CenterContainer" index="0"]
+margin_left = 64.0
+margin_right = 96.0
+text = "2"
+
+[node name="increment" parent="GridContainer/str/HBoxContainer" index="2"]
+margin_left = 29.0
+margin_right = 37.0
+
+[node name="dex" parent="GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 28.0
+margin_right = 40.0
+margin_bottom = 44.0
+
+[node name="decrement" parent="GridContainer/dex/HBoxContainer" index="0"]
+margin_left = 3.0
+margin_right = 11.0
+
+[node name="attribute_sym" parent="GridContainer/dex/HBoxContainer" index="1"]
+margin_left = 12.0
+margin_right = 28.0
+texture = ExtResource( 3 )
+
+[node name="stat_label" parent="GridContainer/dex/HBoxContainer/attribute_sym/CenterContainer" index="0"]
+margin_left = 64.0
+margin_right = 96.0
+text = "3"
+
+[node name="increment" parent="GridContainer/dex/HBoxContainer" index="2"]
+margin_left = 29.0
+margin_right = 37.0
+
+[node name="con" parent="GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 37.0
+margin_top = 28.0
+margin_right = 77.0
+margin_bottom = 44.0
+
+[node name="decrement" parent="GridContainer/con/HBoxContainer" index="0"]
+margin_left = 3.0
+margin_right = 11.0
+
+[node name="attribute_sym" parent="GridContainer/con/HBoxContainer" index="1"]
+margin_left = 12.0
+margin_right = 28.0
+texture = ExtResource( 4 )
+
+[node name="stat_label" parent="GridContainer/con/HBoxContainer/attribute_sym/CenterContainer" index="0"]
+margin_left = 64.0
+margin_right = 96.0
+text = "4"
+
+[node name="increment" parent="GridContainer/con/HBoxContainer" index="2"]
+margin_left = 29.0
+margin_right = 37.0
+
+[node name="spr" parent="GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 56.0
+margin_right = 40.0
+margin_bottom = 72.0
+
+[node name="decrement" parent="GridContainer/spr/HBoxContainer" index="0"]
+margin_left = 3.0
+margin_right = 11.0
+
+[node name="attribute_sym" parent="GridContainer/spr/HBoxContainer" index="1"]
+margin_left = 12.0
+margin_right = 28.0
+texture = ExtResource( 5 )
+
+[node name="stat_label" parent="GridContainer/spr/HBoxContainer/attribute_sym/CenterContainer" index="0"]
+margin_left = 64.0
+margin_right = 96.0
+text = "5"
+
+[node name="increment" parent="GridContainer/spr/HBoxContainer" index="2"]
+margin_left = 29.0
+margin_right = 37.0
+
+[node name="lck" parent="GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 37.0
+margin_top = 56.0
+margin_right = 77.0
+margin_bottom = 72.0
+
+[node name="decrement" parent="GridContainer/lck/HBoxContainer" index="0"]
+margin_left = 3.0
+margin_right = 11.0
+
+[node name="attribute_sym" parent="GridContainer/lck/HBoxContainer" index="1"]
+margin_left = 12.0
+margin_right = 28.0
+texture = ExtResource( 6 )
+
+[node name="stat_label" parent="GridContainer/lck/HBoxContainer/attribute_sym/CenterContainer" index="0"]
+margin_left = 64.0
+margin_right = 96.0
+text = "6"
+
+[node name="increment" parent="GridContainer/lck/HBoxContainer" index="2"]
+margin_left = 29.0
+margin_right = 37.0
+
+[node name="points" type="Label" parent="."]
+margin_left = 145.321
+margin_top = 324.751
+margin_right = 185.321
+margin_bottom = 357.751
+custom_fonts/font = ExtResource( 10 )
+text = "60"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reset" type="TextureButton" parent="."]
+margin_left = 141.819
+margin_top = 19.5502
+margin_right = 150.819
+margin_bottom = 28.5502
+rect_scale = Vector2( 4, 4 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dragbar" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 0.840912
+margin_top = 1.68179
+margin_right = 40.8409
+margin_bottom = 41.6818
+rect_scale = Vector2( 8.01101, 0.443169 )
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[editable path="GridContainer/int"]
+[editable path="GridContainer/str"]
+[editable path="GridContainer/dex"]
+[editable path="GridContainer/con"]
+[editable path="GridContainer/spr"]
+[editable path="GridContainer/lck"]

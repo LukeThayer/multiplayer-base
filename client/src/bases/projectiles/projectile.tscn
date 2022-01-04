@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="projectile" type="KinematicBody2D"]
+
+[node name="sprite" type="AnimatedSprite" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="time_out" type="Timer" parent="."]
+
+[node name="death_timer" type="Timer" parent="."]
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource( 1 )

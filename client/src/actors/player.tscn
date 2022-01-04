@@ -1,0 +1,118 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://assets/player/DY_dash.png" type="Texture" id=1]
+[ext_resource path="res://assets/player/DY_idle.png" type="Texture" id=2]
+[ext_resource path="res://assets/player/DY_run.png" type="Texture" id=3]
+[ext_resource path="res://src/actors/player.gd" type="Script" id=4]
+[ext_resource path="res://src/bases/projectiles/projectile_spawner.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 5.90604, 5.00757 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 3 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "run",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "dash",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "idle",
+"speed": 2.0
+} ]
+
+[sub_resource type="Curve" id=16]
+_data = [ Vector2( 0.0048077, 0.982883 ), 0.0, 0.0, 0, 0, Vector2( 0.995192, 0.645045 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=17]
+offsets = PoolRealArray( 0.157609, 0.576087 )
+colors = PoolColorArray( 0.0941176, 0.0784314, 0.145098, 1, 0.14902, 0.168627, 0.266667, 0.756863 )
+
+[sub_resource type="Curve" id=18]
+min_value = -1.0
+_data = [ Vector2( 0.00721154, -0.00342345 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0686486 ), 0.0, 0.0, 0, 0 ]
+
+[node name="player" type="KinematicBody2D"]
+collision_mask = 6
+script = ExtResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.35, 0.35 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.343281, -5.54148 )
+shape = SubResource( 15 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 2.74622, -14.3686 )
+frames = SubResource( 8 )
+animation = "idle"
+playing = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite"]
+position = Vector2( -2.60222, 5.33904 )
+z_index = 1
+amount = 100
+lifetime = 1.7
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 8.0
+direction = Vector2( 0, -1 )
+gravity = Vector2( 0, 3 )
+initial_velocity = 3.0
+radial_accel = 3.67
+radial_accel_random = 0.3
+scale_amount_curve = SubResource( 16 )
+color_ramp = SubResource( 17 )
+hue_variation_random = 0.3
+hue_variation_curve = SubResource( 18 )
+
+[node name="projectile_spawner" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -9 )
